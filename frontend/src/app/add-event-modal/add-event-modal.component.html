@@ -1,0 +1,47 @@
+<div class="modal-header">
+  <h5 >
+    {{mode == 'maj'? "Modifier Evenement" : "Ajouter Evenement"}}
+  </h5>
+</div>
+<div class="modal-body">
+
+  <form #addForm="ngForm">
+    <div class="form-group">
+      <label for="name" class="col-form-label">Nom</label>
+      <div>
+        <input [(ngModel)]="currentEvent.name" required type="text" class="form-control" name="plate" id="plate"
+          placeholder="Nom d'evennement">
+      </div>
+    </div>
+    <!--Date-->
+    <div class="form-group">
+      <label for="date" class="form-label">Date</label>
+      <div>
+        <input [(ngModel)]="currentEvent.date" required type="datetime-local" class="form-control" name="date" id="date"
+          placeholder="date d'evennement">
+      </div>
+    </div>
+    <!--Lieu-->
+    <div class="form-group">
+      <label for="location" class="col-form-label">Lieu</label>
+      <div >
+        <input [(ngModel)]="currentEvent.location" required type="text" class="form-control" name="location"
+          id="location" placeholder="Lieu d'evennement">
+      </div>
+    </div>
+
+    <!--Description-->
+    <div class="form-group">
+        <label for="description">Description d'evennement</label>
+        <textarea class="form-control" [(ngModel)]="currentEvent.description" rows="3" name="description" id="description" placeholder="Description d'evennement"></textarea>
+    </div>
+    <div class="form-group mt-1">
+        <div>
+          <button class="btn btn-primary w-100" [disabled]="addForm.invalid" (click)="submitForm()">
+            {{mode == 'maj'? "Modifier" : "Ajouter"}}
+          </button>
+        </div>
+      </div>
+  </form>
+
+</div>

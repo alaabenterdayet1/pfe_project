@@ -1,0 +1,32 @@
+<div class="modal-header">Liste des participants</div>
+
+<div class="modal-body">
+  <div class="candidate-list-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Prénom</th>
+          <th scope="col">Nom de famille</th>
+          <th scope="col">E-mail</th>
+          <th scope="col">Téléphone</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let candidate of candidates">
+          <td>{{ candidate.firstName }}</td>
+          <td>{{ candidate.lastName }}</td>
+          <td>{{ candidate.email }}</td>
+          <td>{{ candidate.telephone }}</td>
+          <td>
+            <button class="btn btn-danger btn-sm" (click)="deleteCandidate(candidate)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div class="d-flex justify-content-end mt-3">
+      <button class="btn btn-primary" (click)="exportToExcel()">Exporter vers Excel</button>
+    </div>
+  </div>
+</div>
