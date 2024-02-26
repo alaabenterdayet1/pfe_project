@@ -1,27 +1,33 @@
+import dotenv from 'dotenv';
+dotenv.config();
 
-//EXPRESS
 import express from 'express';
+import userRoutes from './routes/userRoutes.js';
+import dbConnection from './config/db.conn.js';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import morgan from 'morgan';
 
 const app = express();
 
-//CONTROLLERS
-import {router as eventsRouter} from './routes/Events.js';
-import {router as registerEventsRouter} from './routes/RegisterEvents.js';
-
-
-// JSON DATA HANDLING MIDDLEWARE
-import bodyParser from 'body-parser';
+// Express middleware
+app.use(express.json());
 app.use(bodyParser.json());
-
-//CORS MIDDLEWEAR
-import cors from 'cors';
 app.use(cors());
-
-/*ROUTING*/
-app.use('/events',eventsRouter);
-app.use('/registerEvents',registerEventsRouter);
+app.use(morgan('dev'));
 
 
-app.listen(3000,()=>{
-    console.log("Listening on port 3000");
+
+
+// Routes
+app.use("/users", userRoutes);
+
+
+
+
+
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
