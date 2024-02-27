@@ -1,3 +1,5 @@
-node_modules/
+# Ignore les fichiers .env
 .env
-```
+
+# Ignore le répertoire node_modules
+node_modules/
