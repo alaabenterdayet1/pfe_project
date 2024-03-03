@@ -1,11 +1,21 @@
-import express from 'express';
-const router = express.Router();
-import { getUsers, createUser, updateUser, deleteUser } from '../controllers/userController.js';
+import { Router } from 'express';
+const router = Router();
 
-router.get('/', getUsers);
-router.post('/users', createUser);
-router.put('/users/:id', updateUser);
-router.delete('/users/:id', deleteUser);
+import { getUserById, getUsers, createUser, updateUser, deleteUser, getLatestUser } from '../controllers/userController.js';
 
+// Route pour obtenir tous les utilisateurs
+router.route('/')
+    .get(getUsers)
+    .post(createUser);
+
+// Route pour obtenir le dernier utilisateur créé
+router.route('/latest')
+    .get(getLatestUser);
+
+// Route pour obtenir, mettre à jour et supprimer un utilisateur par ID
+router.route('/:id')
+    .get(getUserById)
+    .put(updateUser)
+    .delete(deleteUser);
 
 export default router;
