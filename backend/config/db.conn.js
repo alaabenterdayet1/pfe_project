@@ -5,7 +5,7 @@ dotenv.config();
 const MONGODB_URI = process.env.MONGODB_URI;
 
 mongoose.connect(MONGODB_URI, {
-    dbName: 'learnode', // Nom de votre base de données (facultatif)
+    dbName: 'pfe_base', // Nom de votre base de données (facultatif)
 }).then(() => {
     console.log('Connexion à la base de données réussie');
 }).catch((err) => {
