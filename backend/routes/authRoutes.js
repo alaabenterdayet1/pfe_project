@@ -8,8 +8,8 @@ const router = express.Router();
 
 //post routes
 router.route('/register').post(register); // register route
-router.route('/login').post(login); // login route
-router.route('/verifyUser').post(verifyUser , (req, res) => {res.send({ message: 'User Verified' });}); // verify user route
+router.route('/login').post( login); // login route
+//router.route('/verifyUser').post(verifyUser , (req, res) => {res.send({ message: 'User Verified' });}); // verify user route
 
 
 

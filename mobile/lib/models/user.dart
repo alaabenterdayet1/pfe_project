@@ -1,10 +1,9 @@
 class User {
   final String id;
   final String username;
-  final String name;
   final String email;
   final String password;
-  final String phone;
+
   final String role;
   final bool active;
   final DateTime createdAt;
@@ -13,10 +12,8 @@ class User {
   User({
     required this.id,
     required this.username,
-    required this.name,
     required this.email,
     required this.password,
-    required this.phone,
     required this.role,
     required this.active,
     required this.createdAt,
@@ -28,10 +25,9 @@ class User {
       return User(
         id: json['_id'] ?? '',
         username: json['username'] ?? '',
-        name: json['name'] ?? '',
         email: json['email'] ?? '',
         password: json['password'] ?? '',
-        phone: json['phone'] ?? '',
+
         role: json['role'] ?? '',
         active: json['active'] ?? false,
         createdAt: json['createdAt'] != null ? DateTime.tryParse(json['createdAt']) ?? DateTime.now() : DateTime.now(),
@@ -42,10 +38,9 @@ class User {
       return User(
         id: '',
         username: '',
-        name: '',
         email: '',
         password: '',
-        phone: '',
+
         role: '',
         active: false,
         createdAt: DateTime.now(),
@@ -58,10 +53,9 @@ class User {
     return {
 
       'username': username,
-      'name': name,
       'email': email,
       'password': password,
-      'phone': phone,
+
       'role': role,
       'active': active,
       'createdAt': createdAt.toIso8601String(),

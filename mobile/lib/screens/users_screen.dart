@@ -61,12 +61,12 @@ class _UsersScreenState extends State<UsersScreen> {
             elevation: 4.0, // Ombre sous la carte
             margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0), // Marge autour de la carte
             child: ListTile(
-              title: Text(user.name, style: TextStyle(fontWeight: FontWeight.bold)), // Nom en gras
+              title: Text(user.username, style: TextStyle(fontWeight: FontWeight.bold)), // Nom en gras
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(user.email),
-                  Text('Téléphone: ${user.phone}'),
+
                   Text('Rôle: ${user.role}'),
                 ],
               ),

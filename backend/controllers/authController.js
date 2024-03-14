@@ -19,11 +19,8 @@ async function validateEmail(email) {
 //register
 export async function register(req, res) {
     try {
-        const { username, password, repassword, profile, email, phone, lastname, firstname } = req.body;
+        const { username, password, repassword, profile, email } = req.body;
 
-        if (!phone || !lastname || !firstname) {
-            return res.status(400).send({ error: "Phone, Lastname, and Firstname are required" });
-        }
 
         if (password !== repassword) {
             return res.status(400).send({ error: "Passwords do not match" });
@@ -61,10 +58,8 @@ export async function register(req, res) {
             username,
             password: hashedPassword,
             profile: profile || '',
-            email,
-            phone,
-            lastname,
-            firstname
+            email
+            
         });
 
         await newUser.save();
@@ -107,22 +102,24 @@ export async function login(req, res) {
         res.status(500).send({ error: error.message });
     }
 }
-//verify user
+//verify user or email
+export async function verifyUser(req, res) {
+    const { email, username } = req.body;
 
-export async function verifyUser(req, res, next){
     try {
-        
-        const { username } = req.method == "GET" ? req.query : req.body;
+        const user = await UserModel.findOne({ $or: [{ email }, { username }] });
 
-        // check the user existance
-        let exist = await UserModel.findOne({ username });
-        if(!exist) return res.status(404).send({ error : "Can't find User!"});
-        next();
+        if (!user) {
+            return res.status(404).send({ error: "User not found" });
+        }
 
+        return res.status(200).send({ msg: "User found" });
     } catch (error) {
-        return res.status(404).send({ error: "Authentication Error"});
+        res.status(500).send({ error: error.message });
     }
 }
+
+
 
 /** GET: http://localhost:8080/api/user/example123 */
 export async function getUser(req,res){

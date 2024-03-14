@@ -7,17 +7,6 @@ const userSchema = new mongoose.Schema({
     trim: true,
     unique: [true, "Name is already taken"]
   },
-
-  firstname: {
-    type: String,
-    required: [true, "Name is required"],
-    trim: true,
-  },
-  lastname: {
-    type: String,
-    required: [true, "Name is required"],
-    trim: true,
-  },
   email: {
     type: String,
     required: [true, "Email is required"],
@@ -27,10 +16,6 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, "Password is required"],
-  },
-  phone:{
-    type: String,
-    required: [true, "Phone is required"],
   },
   role: {
     type: String,

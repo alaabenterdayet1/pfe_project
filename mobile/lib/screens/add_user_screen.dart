@@ -13,20 +13,16 @@ class AddUserScreen extends StatefulWidget {
 }
 
 class _AddUserScreenState extends State<AddUserScreen> {
-  late TextEditingController _nameController;
   late TextEditingController _usernameController;
   late TextEditingController _emailController;
-  late TextEditingController _phoneController;
   late TextEditingController _roleController;
   late TextEditingController _passwordController;
 
   @override
   void initState() {
     super.initState();
-    _nameController = TextEditingController(text: widget.user?.name ?? '');
     _usernameController = TextEditingController(text: widget.user?.username ?? '');
     _emailController = TextEditingController(text: widget.user?.email ?? '');
-    _phoneController = TextEditingController(text: widget.user?.phone ?? '');
     _roleController = TextEditingController(text: widget.user?.role ?? '');
     _passwordController = TextEditingController();
   }
@@ -43,10 +39,9 @@ class _AddUserScreenState extends State<AddUserScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _buildTextField(_nameController, 'Nom', Icons.person),
+
             _buildTextField(_usernameController, 'Nom d\'utilisateur', Icons.person_outline),
             _buildTextField(_emailController, 'Email', Icons.email),
-            _buildTextField(_phoneController, 'Téléphone', Icons.phone),
             _buildTextField(_roleController, 'Rôle', Icons.work_outline),
             _buildPasswordField(),
             SizedBox(height: 20),
@@ -102,10 +97,8 @@ class _AddUserScreenState extends State<AddUserScreen> {
     try {
       final newUser = User(
         id: widget.user?.id ?? '',
-        name: _nameController.text.trim(),
         username: _usernameController.text.trim(),
         email: _emailController.text.trim(),
-        phone: _phoneController.text.trim(),
         role: _roleController.text.trim(),
         password: _passwordController.text.trim(),
         active: true, // You may need to handle active status separately

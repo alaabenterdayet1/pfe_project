@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/screens/users_screen.dart';
+import 'package:mobile/screens/login_screen.dart';
 
 
 void main() {
@@ -10,12 +10,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'My App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: UsersScreen(), // Affichez l'écran UsersScreen comme page d'accueil
+      home: LoginScreen(), // Définir la page de connexion comme page d'accueil
     );
   }
 }
